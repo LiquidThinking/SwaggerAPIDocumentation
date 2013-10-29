@@ -5,16 +5,16 @@ using SwaggerAPIDocumentation.Interfaces;
 
 namespace SwaggerAPIDocumentation
 {
-	public class SwaggerSwaggerApiDocumentation<TBaseApiControllerType> : ISwaggerApiDocumentation
+	public class SwaggerApiDocumentation<TBaseApiControllerType> : ISwaggerApiDocumentation
 		where TBaseApiControllerType : Controller
 	{
 		private readonly ISwaggerDocumentationAssemblyTools _swaggerDocumentationAssemblyTools;
 		private readonly ISwaggerDocumentationCreator _swaggerDocumentationCreator;
 		private readonly IJsonSerializer _jsonSerializer;
 
-		public SwaggerSwaggerApiDocumentation() : this( new SwaggerDocumentationAssemblyTools(), new SwaggerDocumentationCreator(), new JsonSerializer() ) {}
+		public SwaggerApiDocumentation() : this( new SwaggerDocumentationAssemblyTools(), new SwaggerDocumentationCreator(), new JsonSerializer() ) {}
 
-		internal SwaggerSwaggerApiDocumentation(
+		internal SwaggerApiDocumentation(
 			ISwaggerDocumentationAssemblyTools swaggerDocumentationAssemblyTools,
 			ISwaggerDocumentationCreator swaggerDocumentationCreator,
 			IJsonSerializer jsonSerializer )

@@ -14,7 +14,7 @@ namespace SwaggerAPIDocumentationTests
 		private ISwaggerDocumentationAssemblyTools _swaggerDocumentationAssemblyTools;
 		private ISwaggerDocumentationCreator _swaggerDocumentationCreator;
 		private IJsonSerializer _jsonSerializer;
-		private SwaggerSwaggerApiDocumentation<TestController> _swaggerSwaggerApiDocumentation;
+		private SwaggerApiDocumentation<TestController> _swaggerApiDocumentation;
 
 		[SetUp]
 		public void SetUp()
@@ -23,13 +23,13 @@ namespace SwaggerAPIDocumentationTests
 			_swaggerDocumentationCreator = MockRepository.GenerateMock<ISwaggerDocumentationCreator>();
 			_jsonSerializer = MockRepository.GenerateMock<IJsonSerializer>();
 
-			_swaggerSwaggerApiDocumentation = new SwaggerSwaggerApiDocumentation<TestController>( _swaggerDocumentationAssemblyTools, _swaggerDocumentationCreator, _jsonSerializer );
+			_swaggerApiDocumentation = new SwaggerApiDocumentation<TestController>( _swaggerDocumentationAssemblyTools, _swaggerDocumentationCreator, _jsonSerializer );
 		}
 
 		[Test]
 		public void Controller_Always_CanGetInstance()
 		{
-			var apiDocumentation = new SwaggerSwaggerApiDocumentation<TestController>();
+			var apiDocumentation = new SwaggerApiDocumentation<TestController>();
 
 			Assert.IsNotNull( apiDocumentation );
 		}
@@ -37,7 +37,7 @@ namespace SwaggerAPIDocumentationTests
 		[Test]
 		public void GetControllerDocumentation_WhenControllerTypeIsTestController_CallsGetApiResourceWithTestController()
 		{
-			_swaggerSwaggerApiDocumentation.GetControllerDocumentation( typeof ( TestController ),null );
+			_swaggerApiDocumentation.GetControllerDocumentation( typeof ( TestController ),null );
 
 			_swaggerDocumentationCreator.AssertWasCalled( x => x.GetApiResource( typeof ( TestController ),null ) );
 		}
@@ -48,7 +48,7 @@ namespace SwaggerAPIDocumentationTests
 			var expected = new SwaggerApiResource();
 			_swaggerDocumentationCreator.Stub(x => x.GetApiResource(typeof(TestController), null)).Return(expected);
 
-			_swaggerSwaggerApiDocumentation.GetControllerDocumentation(typeof(TestController), null);
+			_swaggerApiDocumentation.GetControllerDocumentation(typeof(TestController), null);
 
 			_jsonSerializer.AssertWasCalled( x => x.SerializeObject( expected ) );
 		}
@@ -59,7 +59,7 @@ namespace SwaggerAPIDocumentationTests
 			const string expected = "Expected Output";
 			_jsonSerializer.Stub( x => x.SerializeObject( Arg<Object>.Is.Anything ) ).Return( expected );
 
-			var result = _swaggerSwaggerApiDocumentation.GetControllerDocumentation(typeof(TestController), null);
+			var result = _swaggerApiDocumentation.GetControllerDocumentation(typeof(TestController), null);
 
 			Assert.AreEqual( expected, result );
 		}
@@ -67,7 +67,7 @@ namespace SwaggerAPIDocumentationTests
 		[Test]
 		public void GetSwaggerApiList_WhenControllerTypeIsTestController_CallsGetApiControllerTypesWithTestController()
 		{
-			_swaggerSwaggerApiDocumentation.GetSwaggerAPIList();
+			_swaggerApiDocumentation.GetSwaggerAPIList();
 
 			_swaggerDocumentationAssemblyTools.AssertWasCalled( x => x.GetApiControllerTypes( typeof ( TestController ) ) );
 		}
@@ -78,7 +78,7 @@ namespace SwaggerAPIDocumentationTests
 			var expected = new List<Type>();
 			_swaggerDocumentationAssemblyTools.Stub( x => x.GetApiControllerTypes( Arg<Type>.Is.Anything ) ).Return( expected );
 
-			_swaggerSwaggerApiDocumentation.GetSwaggerAPIList();
+			_swaggerApiDocumentation.GetSwaggerAPIList();
 
 			_swaggerDocumentationAssemblyTools.AssertWasCalled( x => x.GetTypesThatAreDecoratedWithApiDocumentationAttribute( expected ) );
 		}
@@ -89,7 +89,7 @@ namespace SwaggerAPIDocumentationTests
 			var expected = new List<Type>();
 			_swaggerDocumentationAssemblyTools.Stub( x => x.GetTypesThatAreDecoratedWithApiDocumentationAttribute( Arg<List<Type>>.Is.Anything ) ).Return( expected );
 
-			_swaggerSwaggerApiDocumentation.GetSwaggerAPIList();
+			_swaggerApiDocumentation.GetSwaggerAPIList();
 
 			_swaggerDocumentationCreator.AssertWasCalled( x => x.GetSwaggerResourceList( expected ) );
 		}
@@ -100,7 +100,7 @@ namespace SwaggerAPIDocumentationTests
 			var expected = new SwaggerContents();
 			_swaggerDocumentationCreator.Stub( x => x.GetSwaggerResourceList( Arg<List<Type>>.Is.Anything ) ).Return( expected );
 
-			_swaggerSwaggerApiDocumentation.GetSwaggerAPIList();
+			_swaggerApiDocumentation.GetSwaggerAPIList();
 
 			_jsonSerializer.AssertWasCalled( x => x.SerializeObject( Arg<Object>.Is.Anything ) );
 		}
@@ -111,7 +111,7 @@ namespace SwaggerAPIDocumentationTests
 			const string expected = "Expected Result";
 			_jsonSerializer.Stub( x => x.SerializeObject( Arg<Object>.Is.Anything ) ).Return( expected );
 
-			var result = _swaggerSwaggerApiDocumentation.GetSwaggerAPIList();
+			var result = _swaggerApiDocumentation.GetSwaggerAPIList();
 
 			Assert.AreEqual( expected, result );
 		}
