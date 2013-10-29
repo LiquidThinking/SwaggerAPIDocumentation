@@ -2,7 +2,7 @@
 
 namespace SwaggerAPIDocumentation.Interfaces
 {
-	internal interface ISwaggerApiDocumentation
+	public interface ISwaggerApiDocumentation
 	{
 		string GetSwaggerAPIList();
 		string GetControllerDocumentation( Type controllerType, String baseUrl );
