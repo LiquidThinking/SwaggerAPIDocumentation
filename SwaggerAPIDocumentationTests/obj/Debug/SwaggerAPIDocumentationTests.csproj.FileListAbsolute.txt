@@ -1,0 +1,12 @@
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\SwaggerAPIDocumentationTests.dll
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\SwaggerAPIDocumentationTests.pdb
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\nunit.framework.dll
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\Rhino.Mocks.dll
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\SwaggerAPIDocumentation.dll
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\Newtonsoft.Json.dll
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\SwaggerAPIDocumentation.pdb
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\nunit.framework.xml
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\Rhino.Mocks.xml
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\obj\Debug\SwaggerAPIDocumentationTests.csprojResolveAssemblyReference.cache
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\obj\Debug\SwaggerAPIDocumentationTests.dll
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\obj\Debug\SwaggerAPIDocumentationTests.pdb

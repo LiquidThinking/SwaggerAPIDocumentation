@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwaggerAPIDocumentation", "ApiDocumentation\SwaggerAPIDocumentation.csproj", "{4FCE5370-4A7E-470D-A045-FC19C8F2D18B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwaggerAPIDocumentationTests", "SwaggerAPIDocumentationTests\SwaggerAPIDocumentationTests.csproj", "{784B8D7A-6FE9-494E-9EC8-41171AA5AD73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4FCE5370-4A7E-470D-A045-FC19C8F2D18B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FCE5370-4A7E-470D-A045-FC19C8F2D18B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FCE5370-4A7E-470D-A045-FC19C8F2D18B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FCE5370-4A7E-470D-A045-FC19C8F2D18B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{784B8D7A-6FE9-494E-9EC8-41171AA5AD73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{784B8D7A-6FE9-494E-9EC8-41171AA5AD73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{784B8D7A-6FE9-494E-9EC8-41171AA5AD73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{784B8D7A-6FE9-494E-9EC8-41171AA5AD73}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
