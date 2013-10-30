@@ -14,6 +14,8 @@ namespace SwaggerAPIDocumentation
 
 		public SwaggerApiDocumentation() : this( new SwaggerDocumentationAssemblyTools(), new SwaggerDocumentationCreator(), new JsonSerializer() ) {}
 
+		public SwaggerApiDocumentation( IJsonSerializer jsonSerializer ) : this( new SwaggerDocumentationAssemblyTools(), new SwaggerDocumentationCreator(), jsonSerializer ) {}
+
 		internal SwaggerApiDocumentation(
 			ISwaggerDocumentationAssemblyTools swaggerDocumentationAssemblyTools,
 			ISwaggerDocumentationCreator swaggerDocumentationCreator,

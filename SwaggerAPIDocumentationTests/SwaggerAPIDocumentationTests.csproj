@@ -49,6 +49,7 @@
     <Compile Include="BaseAutomatedMockWireupTest.cs" />
     <Compile Include="MockDictionary.cs" />
     <Compile Include="ModelsGeneratorTests.cs" />
+    <Compile Include="NewtonSoftTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SwaggerAPIDocumentationTests.cs" />
     <Compile Include="SwaggerDocumentationAssemblyToolsTests.cs" />

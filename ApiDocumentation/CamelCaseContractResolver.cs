@@ -1,4 +1,8 @@
-﻿using Newtonsoft.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using SwaggerAPIDocumentation.ViewModels;
 
 namespace SwaggerAPIDocumentation
 {
@@ -6,7 +10,7 @@ namespace SwaggerAPIDocumentation
 	{
 		protected override string ResolvePropertyName( string propertyName )
 		{
-			return char.ToLower(propertyName[0]) + propertyName.Substring( 1 );
+			return char.ToLower( propertyName[ 0 ] ) + propertyName.Substring( 1 );
 		}
 	}
 }

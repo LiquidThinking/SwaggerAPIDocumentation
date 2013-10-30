@@ -2,7 +2,7 @@
 
 namespace SwaggerAPIDocumentation.Interfaces
 {
-	internal interface IJsonSerializer
+	public interface IJsonSerializer
 	{
 		String SerializeObject( Object objectToBeEncoded );
 	}

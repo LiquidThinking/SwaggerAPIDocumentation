@@ -10,7 +10,8 @@ namespace SwaggerAPIDocumentation.Implementations
 		{
 			return JsonConvert.SerializeObject( objectToBeEncoded, Formatting.Indented, new JsonSerializerSettings
 			{
-				ContractResolver = new CamelCaseContractResolver()
+				ContractResolver = new CamelCaseContractResolver(),
+				
 			} );
 		}
 	}
