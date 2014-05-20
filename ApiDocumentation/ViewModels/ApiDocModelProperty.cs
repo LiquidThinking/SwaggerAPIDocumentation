@@ -4,7 +4,7 @@ namespace SwaggerAPIDocumentation.ViewModels
 {
 	internal class ApiDocModelProperty
 	{
-		public String Type { get; set; }
-		public ArrayItems Items { get; set; }
+		public String type { get; set; }
+		public ArrayItems items { get; set; }
 	}
 }

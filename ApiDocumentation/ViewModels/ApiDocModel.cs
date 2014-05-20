@@ -5,7 +5,7 @@ namespace SwaggerAPIDocumentation.ViewModels
 {
 	internal class ApiDocModel
 	{
-		public String Id { get; set; }
-		public Dictionary<String,ApiDocModelProperty> Properties { get; set; }
+		public String id { get; set; }
+		public Dictionary<String,ApiDocModelProperty> properties { get; set; }
 	}
 }

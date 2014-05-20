@@ -5,11 +5,11 @@ namespace SwaggerAPIDocumentation.ViewModels
 {
 	internal class ApiDocApiOperations
 	{
-		public String Method { get; set; }
-		public String Summary { get; set; }
-		public String Notes { get; set; }
-		public String Type { get; set; }
-		public String Nickname { get; set; }
-		public List<ApiDocApiParameters> Parameters { get; set; }
+		public String method { get; set; }
+		public String summary { get; set; }
+		public String notes { get; set; }
+		public String type { get; set; }
+		public String nickname { get; set; }
+		public List<ApiDocApiParameters> parameters { get; set; }
 	}
 }

@@ -27,10 +27,10 @@ namespace SwaggerAPIDocumentationTests
 		{
 			var result = this.ObjectUnderTest.GetControllerApiEndpoints( typeof ( TestClass1 ) );
 
-			Assert.IsTrue( result.Any( x => x.Path == "TestMethod1" ) );
-			Assert.IsTrue( result.Any( x => x.Path == "TestMethod2" ) );
-			Assert.IsTrue( result.Any( x => x.Path == "Class1" ) );
-			Assert.IsTrue( result.Any( x => x.Path == "Class2" ) );
+			Assert.IsTrue( result.Any( x => x.path == "TestMethod1" ) );
+			Assert.IsTrue( result.Any( x => x.path == "TestMethod2" ) );
+			Assert.IsTrue( result.Any( x => x.path == "Class1" ) );
+			Assert.IsTrue( result.Any( x => x.path == "Class2" ) );
 		}
 
 		[Test]
@@ -38,10 +38,10 @@ namespace SwaggerAPIDocumentationTests
 		{
 			var result = this.ObjectUnderTest.GetControllerApiEndpoints( typeof ( TestClass1 ) );
 
-			Assert.IsTrue( result.First( x => x.Path == "Class1" ).Operations[ 0 ].Method == "Get" );
-			Assert.IsTrue( result.First( x => x.Path == "Class2" ).Operations[ 0 ].Method == "Post" );
-			Assert.IsTrue( result.First( x => x.Path == "TestMethod1" ).Operations[ 0 ].Method == "Put" );
-			Assert.IsTrue( result.First( x => x.Path == "TestMethod2" ).Operations[ 0 ].Method == "Get" );
+			Assert.IsTrue( result.First( x => x.path == "Class1" ).operations[ 0 ].method == "Get" );
+			Assert.IsTrue( result.First( x => x.path == "Class2" ).operations[ 0 ].method == "Post" );
+			Assert.IsTrue( result.First( x => x.path == "TestMethod1" ).operations[ 0 ].method == "Put" );
+			Assert.IsTrue( result.First( x => x.path == "TestMethod2" ).operations[ 0 ].method == "Get" );
 		}
 
 		[Test]
@@ -50,10 +50,10 @@ namespace SwaggerAPIDocumentationTests
 			var swaggerDocumentationTools = new SwaggerDocumentationTools();
 			var result = swaggerDocumentationTools.GetControllerApiEndpoints( typeof ( TestClass1 ) );
 
-			Assert.IsTrue( result.First( x => x.Path == "Class1" ).Operations[ 0 ].Type == "Boolean" );
-			Assert.IsTrue( result.First( x => x.Path == "Class2" ).Operations[ 0 ].Type == "String" );
-			Assert.IsTrue( result.First( x => x.Path == "TestMethod1" ).Operations[ 0 ].Type == "Int32" );
-			Assert.IsTrue( result.First( x => x.Path == "TestMethod2" ).Operations[ 0 ].Type == "Object" );
+			Assert.IsTrue( result.First( x => x.path == "Class1" ).operations[ 0 ].type == "Boolean" );
+			Assert.IsTrue( result.First( x => x.path == "Class2" ).operations[ 0 ].type == "String" );
+			Assert.IsTrue( result.First( x => x.path == "TestMethod1" ).operations[ 0 ].type == "Int32" );
+			Assert.IsTrue( result.First( x => x.path == "TestMethod2" ).operations[ 0 ].type == "Object" );
 		}
 
 		[Test]
@@ -62,10 +62,10 @@ namespace SwaggerAPIDocumentationTests
 			var swaggerDocumentationTools = new SwaggerDocumentationTools();
 			var result = swaggerDocumentationTools.GetControllerApiEndpoints( typeof ( TestClass1 ) );
 
-			Assert.IsTrue( result.First( x => x.Path == "Class1" ).Operations[ 0 ].Notes == "Class1 Description" );
-			Assert.IsTrue( result.First( x => x.Path == "Class2" ).Operations[ 0 ].Notes == String.Empty );
-			Assert.IsTrue( result.First( x => x.Path == "TestMethod1" ).Operations[ 0 ].Notes == String.Empty );
-			Assert.IsTrue( result.First( x => x.Path == "TestMethod2" ).Operations[ 0 ].Notes == "TestMethod2 Description" );
+			Assert.IsTrue( result.First( x => x.path == "Class1" ).operations[ 0 ].notes == "Class1 Description" );
+			Assert.IsTrue( result.First( x => x.path == "Class2" ).operations[ 0 ].notes == String.Empty );
+			Assert.IsTrue( result.First( x => x.path == "TestMethod1" ).operations[ 0 ].notes == String.Empty );
+			Assert.IsTrue( result.First( x => x.path == "TestMethod2" ).operations[ 0 ].notes == "TestMethod2 Description" );
 		}
 
 		[Test]
@@ -74,9 +74,9 @@ namespace SwaggerAPIDocumentationTests
 			var swaggerDocumentationTools = new SwaggerDocumentationTools();
 			var result = swaggerDocumentationTools.GetControllerApiEndpoints( typeof ( TestClass3 ) );
 
-			Assert.IsTrue( result.First( x => x.Path == "/Fixtures/{fixtureId}" ).Operations[ 0 ].Parameters.Any( x => x.Name == "fixtureId" ) );
-			Assert.IsTrue( result.First( x => x.Path == "/Fixtures/{fixtureId}" ).Operations[ 0 ].Parameters.Any( x => x.Name == "name" && x.Type == "string" && x.ParamType == "query" ) );
-			Assert.IsTrue( result.First( x => x.Path == "/Fixtures/{fixtureId}" ).Operations[ 0 ].Parameters.Any( x => x.Type == "Class1" && x.ParamType == "body" ) );
+			Assert.IsTrue( result.First( x => x.path == "/Fixtures/{fixtureId}" ).operations[ 0 ].parameters.Any( x => x.name == "fixtureId" ) );
+			Assert.IsTrue( result.First( x => x.path == "/Fixtures/{fixtureId}" ).operations[ 0 ].parameters.Any( x => x.name == "name" && x.type == "string" && x.paramType == "query" ) );
+			Assert.IsTrue( result.First( x => x.path == "/Fixtures/{fixtureId}" ).operations[ 0 ].parameters.Any( x => x.type == "Class1" && x.paramType == "body" ) );
 		}
 
 		[Test]

@@ -5,11 +5,11 @@ namespace SwaggerAPIDocumentation.ViewModels
 {
 	internal class SwaggerApiResource
 	{
-		public String ApiVersion { get; set; }
-		public String SwaggerVersion { get; set; }
-		public String BasePath { get; set; }
-		public String ResourcePath { get; set; }
-		public List<SwaggerApiEndpoint> Apis { get; set; }
-		public Dictionary<String, ApiDocModel> Models { get; set; }
+		public String apiVersion { get; set; }
+		public String swaggerVersion { get; set; }
+		public String basePath { get; set; }
+		public String resourcePath { get; set; }
+		public List<SwaggerApiEndpoint> apis { get; set; }
+		public Dictionary<String, ApiDocModel> models { get; set; }
 	}
 }

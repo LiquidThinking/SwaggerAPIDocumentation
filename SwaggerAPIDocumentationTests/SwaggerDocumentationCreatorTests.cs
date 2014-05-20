@@ -38,7 +38,7 @@ namespace SwaggerAPIDocumentationTests
 			{
 				controllerType
 			} );
-			Assert.AreEqual( expected, result.Apis[ 0 ].Path );
+			Assert.AreEqual( expected, result.apis[ 0 ].path );
 		}
 
 		[Test]
@@ -49,15 +49,15 @@ namespace SwaggerAPIDocumentationTests
 				typeof ( FixturesController ),
 				typeof ( TeamsController )
 			} );
-			Assert.AreEqual( "/Fixtures", result.Apis[ 0 ].Path );
-			Assert.AreEqual( "/Teams", result.Apis[ 1 ].Path );
+			Assert.AreEqual( "/Fixtures", result.apis[ 0 ].path );
+			Assert.AreEqual( "/Teams", result.apis[ 1 ].path );
 		}
 
 		[Test]
 		public void GetApiDocApiGroup_Always_ReturnsCorrectBasePath()
 		{
 			var result = _swaggerDocumentationCreator.GetApiResource(typeof(FixturesController), "http://localhost/api/v1");
-			Assert.AreEqual( "http://localhost/api/v1", result.BasePath );
+			Assert.AreEqual( "http://localhost/api/v1", result.basePath );
 		}
 
 		[Test]
@@ -66,7 +66,7 @@ namespace SwaggerAPIDocumentationTests
 		public void GetApiDocApiGroup_Always_CorrectHasForwardSlashAddedAndControllerEndRemoved( Type controllerType, String expected )
 		{
 			var result = _swaggerDocumentationCreator.GetApiResource(controllerType, null);
-			Assert.AreEqual( expected, result.ResourcePath );
+			Assert.AreEqual( expected, result.resourcePath );
 		}
 
 		[Test]
@@ -85,7 +85,7 @@ namespace SwaggerAPIDocumentationTests
 			_swaggerDocumentationTools.Stub( x => x.GetControllerApiEndpoints( Arg<Type>.Is.Anything ) ).Return( expected );
 
 			var result = _swaggerDocumentationCreator.GetApiResource(typeof(FixturesController), null);
-			Assert.AreEqual( expected, result.Apis );
+			Assert.AreEqual( expected, result.apis );
 		}
 
 		[Test]
@@ -112,7 +112,7 @@ namespace SwaggerAPIDocumentationTests
 			_swaggerDocumentationTools.Stub( x => x.GetControllerModels( Arg<Type>.Is.Anything ) ).Return( expected );
 
 			var result = _swaggerDocumentationCreator.GetApiResource(typeof(FixturesController), null);
-			Assert.AreEqual( expected, result.Models );
+			Assert.AreEqual( expected, result.models );
 		}
 	}
 

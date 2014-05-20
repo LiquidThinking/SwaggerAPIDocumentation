@@ -25,9 +25,9 @@ namespace SwaggerAPIDocumentation.Implementations
 		{
 			return new SwaggerContents
 			{
-				ApiVersion = ApiVersion,
-				SwaggerVersion = SwaggerVersion,
-				Apis = GetSwaggerApiSummaries( controllerTypes )
+				apiVersion = ApiVersion,
+				swaggerVersion = SwaggerVersion,
+				apis = GetSwaggerApiSummaries( controllerTypes )
 			};
 		}
 
@@ -35,26 +35,26 @@ namespace SwaggerAPIDocumentation.Implementations
 		{
 			return new SwaggerApiResource
 			{
-				ApiVersion = ApiVersion,
-				SwaggerVersion = SwaggerVersion,
-				BasePath = baseUrl,
-				ResourcePath = GetControllerPath( controllerType ),
-				Apis = _swaggerDocumentationTools.GetControllerApiEndpoints( controllerType ),
-				Models = _swaggerDocumentationTools.GetControllerModels( controllerType )
+				apiVersion = ApiVersion,
+				swaggerVersion = SwaggerVersion,
+				basePath = baseUrl,
+				resourcePath = GetControllerPath( controllerType ),
+				apis = _swaggerDocumentationTools.GetControllerApiEndpoints( controllerType ),
+				models = _swaggerDocumentationTools.GetControllerModels( controllerType )
 			};
 		}
 
 		private List<SwaggerApiSummary> GetSwaggerApiSummaries( IEnumerable<Type> controllerTypes )
 		{
-			return controllerTypes.Select( GetSwaggerApiSummary ).OrderBy( x => x.Path ).ToList();
+			return controllerTypes.Select( GetSwaggerApiSummary ).OrderBy( x => x.path ).ToList();
 		}
 
 		private SwaggerApiSummary GetSwaggerApiSummary( Type controllerType )
 		{
 			return new SwaggerApiSummary
 			{
-				Path = GetControllerPath( controllerType ),
-				Description = "Operations"
+				path = GetControllerPath( controllerType ),
+				description = "Operations"
 			};
 		}
 

@@ -4,7 +4,7 @@ namespace SwaggerAPIDocumentation.ViewModels
 {
 	internal class SwaggerApiSummary
 	{
-		public String Path { get; set; }
-		public String Description { get; set; }
+		public String path { get; set; }
+		public String description { get; set; }
 	}
 }

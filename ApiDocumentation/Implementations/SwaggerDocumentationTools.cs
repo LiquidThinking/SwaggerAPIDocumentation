@@ -29,9 +29,9 @@ namespace SwaggerAPIDocumentation.Implementations
 
 			return apiDocumentationAttributesAndReturnTypes.Select( x => new SwaggerApiEndpoint
 			{
-				Path = GetPath( x.Key.Url ),
-				Operations = GetApiOperations( x )
-			} ).OrderBy( x => x.Path.Count() ).ToList();
+				path = GetPath( x.Key.Url ),
+				operations = GetApiOperations( x )
+			} ).OrderBy( x => x.path.Count() ).ToList();
 		}
 
 		private static string GetPath( String url )
@@ -45,12 +45,12 @@ namespace SwaggerAPIDocumentation.Implementations
 			{
 				new ApiDocApiOperations
 				{
-					Type = _typeToStringConverter.GetApiOperationType( attributeAndReturnType.Key.ReturnType ?? attributeAndReturnType.Value ),
-					Method = attributeAndReturnType.Key.RequestType.ToString(),
-					Notes = attributeAndReturnType.Key.Description,
-					Nickname = "",
-					Summary = "",
-					Parameters = GetParameters( attributeAndReturnType )
+					type = _typeToStringConverter.GetApiOperationType( attributeAndReturnType.Key.ReturnType ?? attributeAndReturnType.Value ),
+					method = attributeAndReturnType.Key.RequestType.ToString(),
+					notes = attributeAndReturnType.Key.Description,
+					nickname = "",
+					summary = "",
+					parameters = GetParameters( attributeAndReturnType )
 				}
 			};
 		}
@@ -65,18 +65,18 @@ namespace SwaggerAPIDocumentation.Implementations
 			               let type = GetType( parameter )
 			               select new ApiDocApiParameters
 			               {
-				               Required = true,
-				               ParamType = GetParamType( parameter, url ),
-				               Name = name,
-				               Description = "",
-				               Type = type
+				               required = true,
+				               paramType = GetParamType( parameter, url ),
+				               name = name,
+				               description = "",
+				               type = type
 			               } ).ToList();
 
 			if ( attributeAndReturnType.Key.FormBody != null )
 				result.Add( new ApiDocApiParameters
 				{
-					ParamType = "body",
-					Type = _typeToStringConverter.GetApiOperationType( attributeAndReturnType.Key.FormBody )
+					paramType = "body",
+					type = _typeToStringConverter.GetApiOperationType( attributeAndReturnType.Key.FormBody )
 				} );
 
 			return result;

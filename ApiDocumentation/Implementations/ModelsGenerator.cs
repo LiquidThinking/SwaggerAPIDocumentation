@@ -76,7 +76,7 @@ namespace SwaggerAPIDocumentation.Implementations
 				}
 
 				GetNonPrimitiveModels( propertyType, apiDocModels );
-				apiDocModels.First().Value.Properties.Add( property.Name, modelProperty );
+				apiDocModels.First().Value.properties.Add( property.Name, modelProperty );
 			}
 		}
 
@@ -89,7 +89,7 @@ namespace SwaggerAPIDocumentation.Implementations
 		{
 			return new ApiDocModelProperty
 			{
-				Type = _typeToStringConverter.GetApiOperationType( property.PropertyType )
+				type = _typeToStringConverter.GetApiOperationType( property.PropertyType )
 			};
 		}
 
@@ -97,8 +97,8 @@ namespace SwaggerAPIDocumentation.Implementations
 		{
 			return new ApiDocModelProperty
 			{
-				Type = "array",
-				Items = new ArrayItems
+				type = "array",
+				items = new ArrayItems
 				{
 					ArrayType = _typeToStringConverter.GetApiOperationType( arrayType )
 				}
@@ -146,19 +146,19 @@ namespace SwaggerAPIDocumentation.Implementations
 				{
 					"KeyValuePair", new ApiDocModel
 					{
-						Id = "KeyValuePair",
-						Properties = new Dictionary<String, ApiDocModelProperty>
+						id = "KeyValuePair",
+						properties = new Dictionary<String, ApiDocModelProperty>
 						{
 							{
 								"Key", new ApiDocModelProperty
 								{
-									Type = _typeToStringConverter.GetApiOperationType( key )
+									type = _typeToStringConverter.GetApiOperationType( key )
 								}
 							},
 							{
 								"Value", new ApiDocModelProperty
 								{
-									Type = _typeToStringConverter.GetApiOperationType( value )
+									type = _typeToStringConverter.GetApiOperationType( value )
 								}
 							}
 						}
@@ -174,8 +174,8 @@ namespace SwaggerAPIDocumentation.Implementations
 				{
 					name, new ApiDocModel
 					{
-						Id = name,
-						Properties = new Dictionary<String, ApiDocModelProperty>()
+						id = name,
+						properties = new Dictionary<String, ApiDocModelProperty>()
 					}
 				}
 			};

@@ -5,7 +5,7 @@ namespace SwaggerAPIDocumentation.ViewModels
 {
 	internal class SwaggerApiEndpoint
 	{
-		public String Path { get; set; }
-		public List<ApiDocApiOperations> Operations { get; set; }
+		public String path { get; set; }
+		public List<ApiDocApiOperations> operations { get; set; }
 	}
 }

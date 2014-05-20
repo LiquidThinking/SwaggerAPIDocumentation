@@ -110,7 +110,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ApiDocumentationAttribute.cs" />
-    <Compile Include="CamelCaseContractResolver.cs" />
     <Compile Include="Interfaces\IModelsGenerator.cs" />
     <Compile Include="Implementations\JsonSerializer.cs" />
     <Compile Include="Interfaces\IJsonSerializer.cs" />

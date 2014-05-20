@@ -39,7 +39,7 @@ namespace SwaggerAPIDocumentationTests
 		{
 			var result = _modelsGenerator.GetModels( type );
 
-			Assert.AreEqual( expected, result.Values.First().Id );
+			Assert.AreEqual( expected, result.Values.First().id );
 		}
 
 		[Test]
@@ -47,13 +47,13 @@ namespace SwaggerAPIDocumentationTests
 		{
 			var result = _modelsGenerator.GetModels( typeof ( Class1 ) );
 
-			Assert.AreEqual( "String", result.Values.First().Properties[ "StringProperty" ].Type );
-			Assert.AreEqual( "Int16", result.Values.First().Properties[ "Int16Property" ].Type );
-			Assert.AreEqual( "Int32", result.Values.First().Properties[ "Int32Property" ].Type );
-			Assert.AreEqual( "array", result.Values.First().Properties[ "ArrayTypesProperty" ].Type );
-			Assert.AreEqual( "Type", result.Values.First().Properties[ "ArrayTypesProperty" ].Items.ArrayType );
-			Assert.AreEqual( "array", result.Values.First().Properties[ "DateTimeListProperty" ].Type );
-			Assert.AreEqual( "DateTime", result.Values.First().Properties[ "DateTimeListProperty" ].Items.ArrayType );
+			Assert.AreEqual( "String", result.Values.First().properties[ "StringProperty" ].type );
+			Assert.AreEqual( "Int16", result.Values.First().properties[ "Int16Property" ].type );
+			Assert.AreEqual( "Int32", result.Values.First().properties[ "Int32Property" ].type );
+			Assert.AreEqual( "array", result.Values.First().properties[ "ArrayTypesProperty" ].type );
+			Assert.AreEqual( "Type", result.Values.First().properties[ "ArrayTypesProperty" ].items.ArrayType );
+			Assert.AreEqual( "array", result.Values.First().properties[ "DateTimeListProperty" ].type );
+			Assert.AreEqual( "DateTime", result.Values.First().properties[ "DateTimeListProperty" ].items.ArrayType );
 		}
 
 		[Test]
@@ -61,14 +61,14 @@ namespace SwaggerAPIDocumentationTests
 		{
 			var result = _modelsGenerator.GetModels( typeof ( Class2 ) );
 
-			Assert.AreEqual( "String", result.Values.First().Properties[ "String" ].Type );
-			Assert.AreEqual( "Int16", result.Values.First().Properties[ "Int16" ].Type );
-			Assert.AreEqual( "Int32", result.Values.First().Properties[ "Int32" ].Type );
-			Assert.AreEqual( "array", result.Values.First().Properties[ "ArrayTypes" ].Type );
-			Assert.AreEqual( "Type", result.Values.First().Properties[ "ArrayTypes" ].Items.ArrayType );
-			Assert.AreEqual( "array", result.Values.First().Properties[ "DateTimes" ].Type );
-			Assert.AreEqual( "DateTime", result.Values.First().Properties[ "DateTimes" ].Items.ArrayType );
-			Assert.AreEqual( "Class1", result.Values.First().Properties[ "Class1" ].Type );
+			Assert.AreEqual( "String", result.Values.First().properties[ "String" ].type );
+			Assert.AreEqual( "Int16", result.Values.First().properties[ "Int16" ].type );
+			Assert.AreEqual( "Int32", result.Values.First().properties[ "Int32" ].type );
+			Assert.AreEqual( "array", result.Values.First().properties[ "ArrayTypes" ].type );
+			Assert.AreEqual( "Type", result.Values.First().properties[ "ArrayTypes" ].items.ArrayType );
+			Assert.AreEqual( "array", result.Values.First().properties[ "DateTimes" ].type );
+			Assert.AreEqual( "DateTime", result.Values.First().properties[ "DateTimes" ].items.ArrayType );
+			Assert.AreEqual( "Class1", result.Values.First().properties[ "Class1" ].type );
 
 			Assert.IsTrue( result.Last().Key == "Class1" );
 		}
@@ -78,13 +78,13 @@ namespace SwaggerAPIDocumentationTests
 		{
 			var result = _modelsGenerator.GetModels( typeof ( List<Class1> ) );
 
-			Assert.AreEqual( "String", result.Values.First().Properties[ "StringProperty" ].Type );
-			Assert.AreEqual( "Int16", result.Values.First().Properties[ "Int16Property" ].Type );
-			Assert.AreEqual( "Int32", result.Values.First().Properties[ "Int32Property" ].Type );
-			Assert.AreEqual( "array", result.Values.First().Properties[ "ArrayTypesProperty" ].Type );
-			Assert.AreEqual( "Type", result.Values.First().Properties[ "ArrayTypesProperty" ].Items.ArrayType );
-			Assert.AreEqual( "array", result.Values.First().Properties[ "DateTimeListProperty" ].Type );
-			Assert.AreEqual( "DateTime", result.Values.First().Properties[ "DateTimeListProperty" ].Items.ArrayType );
+			Assert.AreEqual( "String", result.Values.First().properties[ "StringProperty" ].type );
+			Assert.AreEqual( "Int16", result.Values.First().properties[ "Int16Property" ].type );
+			Assert.AreEqual( "Int32", result.Values.First().properties[ "Int32Property" ].type );
+			Assert.AreEqual( "array", result.Values.First().properties[ "ArrayTypesProperty" ].type );
+			Assert.AreEqual( "Type", result.Values.First().properties[ "ArrayTypesProperty" ].items.ArrayType );
+			Assert.AreEqual( "array", result.Values.First().properties[ "DateTimeListProperty" ].type );
+			Assert.AreEqual( "DateTime", result.Values.First().properties[ "DateTimeListProperty" ].items.ArrayType );
 
 			Assert.AreEqual( "Class1", result.Keys.First() );
 		}
@@ -94,13 +94,13 @@ namespace SwaggerAPIDocumentationTests
 		{
 			var result = _modelsGenerator.GetModels( typeof ( Class1[] ) );
 
-			Assert.AreEqual( "String", result.Values.First().Properties[ "StringProperty" ].Type );
-			Assert.AreEqual( "Int16", result.Values.First().Properties[ "Int16Property" ].Type );
-			Assert.AreEqual( "Int32", result.Values.First().Properties[ "Int32Property" ].Type );
-			Assert.AreEqual( "array", result.Values.First().Properties[ "ArrayTypesProperty" ].Type );
-			Assert.AreEqual( "Type", result.Values.First().Properties[ "ArrayTypesProperty" ].Items.ArrayType );
-			Assert.AreEqual( "array", result.Values.First().Properties[ "DateTimeListProperty" ].Type );
-			Assert.AreEqual( "DateTime", result.Values.First().Properties[ "DateTimeListProperty" ].Items.ArrayType );
+			Assert.AreEqual( "String", result.Values.First().properties[ "StringProperty" ].type );
+			Assert.AreEqual( "Int16", result.Values.First().properties[ "Int16Property" ].type );
+			Assert.AreEqual( "Int32", result.Values.First().properties[ "Int32Property" ].type );
+			Assert.AreEqual( "array", result.Values.First().properties[ "ArrayTypesProperty" ].type );
+			Assert.AreEqual( "Type", result.Values.First().properties[ "ArrayTypesProperty" ].items.ArrayType );
+			Assert.AreEqual( "array", result.Values.First().properties[ "DateTimeListProperty" ].type );
+			Assert.AreEqual( "DateTime", result.Values.First().properties[ "DateTimeListProperty" ].items.ArrayType );
 
 			Assert.AreEqual( "Class1", result.Keys.First() );
 		}
@@ -110,8 +110,8 @@ namespace SwaggerAPIDocumentationTests
 		{
 			var result = _modelsGenerator.GetModels( typeof ( Class3 ) );
 
-			Assert.AreEqual( "String", result[ "KeyValuePair" ].Properties[ "Key" ].Type );
-			Assert.AreEqual( "Class1", result[ "KeyValuePair" ].Properties[ "Value" ].Type );
+			Assert.AreEqual( "String", result[ "KeyValuePair" ].properties[ "Key" ].type );
+			Assert.AreEqual( "Class1", result[ "KeyValuePair" ].properties[ "Value" ].type );
 
 			Assert.IsTrue( result.ContainsKey( "KeyValuePair" ) );
 			Assert.IsTrue( result.ContainsKey( "Class1" ) );
