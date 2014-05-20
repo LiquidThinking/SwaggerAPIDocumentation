@@ -94,7 +94,7 @@ namespace SwaggerAPIDocumentation.Implementations
 
 		private static string GetParamType( String match, string url )
 		{
-			return ( url.IndexOf( match ) < ( ( url.IndexOf( '?' ) == -1 ) ? url.Length : url.IndexOf( '?' ) ) ? "path" : "query" );
+			return ( url.IndexOf(match, StringComparison.Ordinal) < ( ( url.IndexOf( '?' ) == -1 ) ? url.Length : url.IndexOf( '?' ) ) ? "path" : "query" );
 		}
 
 		private Dictionary<ApiDocumentationAttribute, Type> GetApiDocumentationAttributesAndReturnTypes( Type controllerType )

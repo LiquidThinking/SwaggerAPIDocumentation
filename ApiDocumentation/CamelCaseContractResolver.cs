@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using SwaggerAPIDocumentation.ViewModels;
+﻿using Newtonsoft.Json.Serialization;
 
 namespace SwaggerAPIDocumentation
 {

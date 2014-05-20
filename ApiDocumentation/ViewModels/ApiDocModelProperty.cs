@@ -1,5 +1,4 @@
 ﻿using System;
-using SwaggerAPIDocumentation.Implementations;
 
 namespace SwaggerAPIDocumentation.ViewModels
 {

@@ -26,7 +26,7 @@ namespace SwaggerAPIDocumentation
 			_jsonSerializer = jsonSerializer;
 		}
 
-		public String GetSwaggerAPIList()
+		public String GetSwaggerApiList()
 		{
 			var allApiControllers = _swaggerDocumentationAssemblyTools.GetApiControllerTypes( typeof ( TBaseApiControllerType ) );
 			var pertinentApiControllers = _swaggerDocumentationAssemblyTools.GetTypesThatAreDecoratedWithApiDocumentationAttribute( allApiControllers );

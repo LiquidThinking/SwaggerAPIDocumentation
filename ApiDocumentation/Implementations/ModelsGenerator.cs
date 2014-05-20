@@ -139,7 +139,7 @@ namespace SwaggerAPIDocumentation.Implementations
 			return !propertyType.IsPrimitive && !_exclusions.Contains( propertyType );
 		}
 
-		public Dictionary<String, ApiDocModel> GetKeyValuePairModel( Type key, Type value )
+		private Dictionary<String, ApiDocModel> GetKeyValuePairModel( Type key, Type value )
 		{
 			return new Dictionary<String, ApiDocModel>
 			{

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+	<metadata>
+		<id>SwaggerAPIDocumentation.Mvc4</id>
+		<version>1.0.7</version>
+		<title>Swagger API Documentation Mvc4</title>
+		<authors>Jake</authors>
+		<owners />
+		<projectUrl>https://github.com/LiquidThinking/SwaggerAPIDocumentation</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>A Swagger Documentation Generator For C# MVC</description>
+		<dependencies>
+			<dependency id="Newtonsoft.Json" version="3.5.8" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="..\ApiDocumentation\bin\mvc4\SwaggerAPIDocumentation.dll" target="lib\net40\SwaggerAPIDocumentation.dll" />
+		<file src="..\ApiDocumentation\bin\mvc4\SwaggerAPIDocumentation.pdb" target="lib\net40\SwaggerAPIDocumentation.pdb" />
+	</files>
+</package>

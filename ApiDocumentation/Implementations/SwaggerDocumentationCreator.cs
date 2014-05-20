@@ -21,7 +21,7 @@ namespace SwaggerAPIDocumentation.Implementations
 			_swaggerDocumentationTools = swaggerDocumentationTools;
 		}
 
-		public SwaggerContents GetSwaggerResourceList( List<Type> controllerTypes )
+		public SwaggerContents GetSwaggerResourceList( IEnumerable<Type> controllerTypes )
 		{
 			return new SwaggerContents
 			{

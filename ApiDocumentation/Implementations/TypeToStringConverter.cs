@@ -47,7 +47,7 @@ namespace SwaggerAPIDocumentation.Implementations
 			return String.Format( "array[{0}]", returnType.GetGenericArguments()[ 0 ].Name );
 		}
 
-		public string RemoveGenericInfo( Type type )
+		private string RemoveGenericInfo( Type type )
 		{
 			var name = type.Name;
 			var index = name.IndexOf( '`' );

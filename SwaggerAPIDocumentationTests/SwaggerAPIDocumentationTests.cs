@@ -67,7 +67,7 @@ namespace SwaggerAPIDocumentationTests
 		[Test]
 		public void GetSwaggerApiList_WhenControllerTypeIsTestController_CallsGetApiControllerTypesWithTestController()
 		{
-			_swaggerApiDocumentation.GetSwaggerAPIList();
+			_swaggerApiDocumentation.GetSwaggerApiList();
 
 			_swaggerDocumentationAssemblyTools.AssertWasCalled( x => x.GetApiControllerTypes( typeof ( TestController ) ) );
 		}
@@ -78,7 +78,7 @@ namespace SwaggerAPIDocumentationTests
 			var expected = new List<Type>();
 			_swaggerDocumentationAssemblyTools.Stub( x => x.GetApiControllerTypes( Arg<Type>.Is.Anything ) ).Return( expected );
 
-			_swaggerApiDocumentation.GetSwaggerAPIList();
+			_swaggerApiDocumentation.GetSwaggerApiList();
 
 			_swaggerDocumentationAssemblyTools.AssertWasCalled( x => x.GetTypesThatAreDecoratedWithApiDocumentationAttribute( expected ) );
 		}
@@ -89,7 +89,7 @@ namespace SwaggerAPIDocumentationTests
 			var expected = new List<Type>();
 			_swaggerDocumentationAssemblyTools.Stub( x => x.GetTypesThatAreDecoratedWithApiDocumentationAttribute( Arg<List<Type>>.Is.Anything ) ).Return( expected );
 
-			_swaggerApiDocumentation.GetSwaggerAPIList();
+			_swaggerApiDocumentation.GetSwaggerApiList();
 
 			_swaggerDocumentationCreator.AssertWasCalled( x => x.GetSwaggerResourceList( expected ) );
 		}
@@ -100,7 +100,7 @@ namespace SwaggerAPIDocumentationTests
 			var expected = new SwaggerContents();
 			_swaggerDocumentationCreator.Stub( x => x.GetSwaggerResourceList( Arg<List<Type>>.Is.Anything ) ).Return( expected );
 
-			_swaggerApiDocumentation.GetSwaggerAPIList();
+			_swaggerApiDocumentation.GetSwaggerApiList();
 
 			_jsonSerializer.AssertWasCalled( x => x.SerializeObject( Arg<Object>.Is.Anything ) );
 		}
@@ -111,7 +111,7 @@ namespace SwaggerAPIDocumentationTests
 			const string expected = "Expected Result";
 			_jsonSerializer.Stub( x => x.SerializeObject( Arg<Object>.Is.Anything ) ).Return( expected );
 
-			var result = _swaggerApiDocumentation.GetSwaggerAPIList();
+			var result = _swaggerApiDocumentation.GetSwaggerApiList();
 
 			Assert.AreEqual( expected, result );
 		}

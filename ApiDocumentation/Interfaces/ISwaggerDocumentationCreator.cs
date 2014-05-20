@@ -6,7 +6,7 @@ namespace SwaggerAPIDocumentation.Interfaces
 {
 	internal interface ISwaggerDocumentationCreator
 	{
-		SwaggerContents GetSwaggerResourceList( List<Type> controllerTypes );
+		SwaggerContents GetSwaggerResourceList( IEnumerable<Type> controllerTypes );
 		SwaggerApiResource GetApiResource( Type controllerType, String baseUrl );
 	}
 }

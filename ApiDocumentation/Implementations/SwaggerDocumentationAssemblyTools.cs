@@ -13,7 +13,7 @@ namespace SwaggerAPIDocumentation.Implementations
 			get { return typeof ( ApiDocumentationAttribute ); }
 		}
 
-		public List<Type> GetTypesThatAreDecoratedWithApiDocumentationAttribute( List<Type> controllerTypes )
+		public List<Type> GetTypesThatAreDecoratedWithApiDocumentationAttribute( IEnumerable<Type> controllerTypes )
 		{
 			return ( from type in controllerTypes
 			         where TypeIsDecoratedWithApiDocumentationAttribute( type )
