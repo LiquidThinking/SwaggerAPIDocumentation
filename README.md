@@ -1,5 +1,5 @@
-<a href="http://buildserver.spawtz.com:8000/viewType.html?buildTypeId=SwaggerApiDocumentation&guest=1">
-<img src="http://buildserver.spawtz.com:8000/app/rest/builds/buildType:(id:SwaggerApiDocumentation)/statusIcon"/>
+<a href="http://buildserver.spawtz.com:8000/viewType.html?buildTypeId=SwaggerApiDocumentation_SwaggerApiDocumentation&guest=1">
+<img src="http://buildserver.spawtz.com:8000/app/rest/builds/buildType:(id:SwaggerApiDocumentation_SwaggerApiDocumentation)/statusIcon"/>
 </a>
 
 SwaggerAPIDocumentation
