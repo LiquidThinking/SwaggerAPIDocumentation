@@ -170,7 +170,7 @@ namespace SwaggerAPIDocumentationTests
 	{
 		public String RequiredProp { get; set; }
 
-		[ApiDocumentationOptional]
+		[Optional]
 		public String OptionalProp { get; set; }
 	}
 
