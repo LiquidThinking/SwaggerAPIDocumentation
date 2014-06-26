@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using Rhino.Mocks;
+using SwaggerAPIDocumentation;
 using SwaggerAPIDocumentation.Implementations;
 
 namespace SwaggerAPIDocumentationTests
@@ -19,10 +20,10 @@ namespace SwaggerAPIDocumentationTests
 		}
 
 		[Test]
-		[TestCase( typeof ( Class1 ), "Class1" )]
-		[TestCase( typeof ( Class2 ), "Class2" )]
-		[TestCase( typeof ( List<Class1> ), "Class1" )]
-		[TestCase( typeof ( Class2[] ), "Class2" )]
+		[TestCase( typeof( Class1 ), "Class1" )]
+		[TestCase( typeof( Class2 ), "Class2" )]
+		[TestCase( typeof( List<Class1> ), "Class1" )]
+		[TestCase( typeof( Class2[] ), "Class2" )]
 		public void GetModels_Always_SetsKeyAsNameOfClass( Type type, String expected )
 		{
 			var result = _modelsGenerator.GetModels( type );
@@ -31,10 +32,10 @@ namespace SwaggerAPIDocumentationTests
 		}
 
 		[Test]
-		[TestCase( typeof ( Class1 ), "Class1" )]
-		[TestCase( typeof ( Class2 ), "Class2" )]
-		[TestCase( typeof ( List<Class1> ), "Class1" )]
-		[TestCase( typeof ( Class2[] ), "Class2" )]
+		[TestCase( typeof( Class1 ), "Class1" )]
+		[TestCase( typeof( Class2 ), "Class2" )]
+		[TestCase( typeof( List<Class1> ), "Class1" )]
+		[TestCase( typeof( Class2[] ), "Class2" )]
 		public void GetModels_Always_SetsValueIdAsNameOfClass( Type type, String expected )
 		{
 			var result = _modelsGenerator.GetModels( type );
@@ -45,7 +46,7 @@ namespace SwaggerAPIDocumentationTests
 		[Test]
 		public void GetModels_ForClass1_SetsPropertiesCorrectly()
 		{
-			var result = _modelsGenerator.GetModels( typeof ( Class1 ) );
+			var result = _modelsGenerator.GetModels( typeof( Class1 ) );
 
 			Assert.AreEqual( "String", result.Values.First().properties[ "StringProperty" ].type );
 			Assert.AreEqual( "Int16", result.Values.First().properties[ "Int16Property" ].type );
@@ -59,7 +60,7 @@ namespace SwaggerAPIDocumentationTests
 		[Test]
 		public void GetModels_ForClass2_SetsPropertiesCorrectly()
 		{
-			var result = _modelsGenerator.GetModels( typeof ( Class2 ) );
+			var result = _modelsGenerator.GetModels( typeof( Class2 ) );
 
 			Assert.AreEqual( "String", result.Values.First().properties[ "String" ].type );
 			Assert.AreEqual( "Int16", result.Values.First().properties[ "Int16" ].type );
@@ -76,7 +77,7 @@ namespace SwaggerAPIDocumentationTests
 		[Test]
 		public void GetModels_ForClass1List_SetsPropertiesCorrectly()
 		{
-			var result = _modelsGenerator.GetModels( typeof ( List<Class1> ) );
+			var result = _modelsGenerator.GetModels( typeof( List<Class1> ) );
 
 			Assert.AreEqual( "String", result.Values.First().properties[ "StringProperty" ].type );
 			Assert.AreEqual( "Int16", result.Values.First().properties[ "Int16Property" ].type );
@@ -92,7 +93,7 @@ namespace SwaggerAPIDocumentationTests
 		[Test]
 		public void GetModels_ForClass1Array_SetsPropertiesCorrectly()
 		{
-			var result = _modelsGenerator.GetModels( typeof ( Class1[] ) );
+			var result = _modelsGenerator.GetModels( typeof( Class1[] ) );
 
 			Assert.AreEqual( "String", result.Values.First().properties[ "StringProperty" ].type );
 			Assert.AreEqual( "Int16", result.Values.First().properties[ "Int16Property" ].type );
@@ -108,7 +109,7 @@ namespace SwaggerAPIDocumentationTests
 		[Test]
 		public void GetModels_ForClass3_CreatesKeyValuePairModelForDictionary()
 		{
-			var result = _modelsGenerator.GetModels( typeof ( Class3 ) );
+			var result = _modelsGenerator.GetModels( typeof( Class3 ) );
 
 			Assert.AreEqual( "String", result[ "KeyValuePair" ].properties[ "Key" ].type );
 			Assert.AreEqual( "Class1", result[ "KeyValuePair" ].properties[ "Value" ].type );
@@ -116,7 +117,24 @@ namespace SwaggerAPIDocumentationTests
 			Assert.IsTrue( result.ContainsKey( "KeyValuePair" ) );
 			Assert.IsTrue( result.ContainsKey( "Class1" ) );
 		}
+
+		[Test]
+		public void GetModels_ForClassWithNoOptionalProperties_HasAllPropertiesInRequiredList()
+		{
+			var result = _modelsGenerator.GetModels( typeof( AllRequiredClass ) );
+			Assert.IsTrue( result.Values.First().required.Contains( "RequiredProp1" ) );
+			Assert.IsTrue( result.Values.First().required.Contains( "RequiredProp2" ) );
+		}
+
+		[Test]
+		public void GetModels_ForClassWithOneOptionalProperty_ExlcudesOptionalPropertiesFromRequiredList()
+		{
+			var result = _modelsGenerator.GetModels( typeof( OneOptionalClass ) );
+			Assert.IsTrue( result.Values.First().required.Contains( "RequiredProp" ) );
+			Assert.IsFalse( result.Values.First().required.Contains( "OptionalProp" ) );
+		}
 	}
+
 
 	public class Class1
 	{
@@ -141,4 +159,19 @@ namespace SwaggerAPIDocumentationTests
 	{
 		public Dictionary<String, Class1> Dictionary { get; set; }
 	}
+
+	public class AllRequiredClass
+	{
+		public String RequiredProp1 { get; set; }
+		public Int32 RequiredProp2 { get; set; }
+	}
+
+	public class OneOptionalClass
+	{
+		public String RequiredProp { get; set; }
+
+		[ApiDocumentationOptional]
+		public String OptionalProp { get; set; }
+	}
+
 }

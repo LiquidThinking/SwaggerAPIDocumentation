@@ -22,12 +22,12 @@ namespace SwaggerAPIDocumentation.Implementations
 
 		private readonly List<Type> _exclusions = new List<Type>
 		{
-			typeof ( String ),
-			typeof ( Type ),
-			typeof ( DateTime ),
-			typeof ( TimeSpan ),
-			typeof ( Decimal ),
-			typeof ( Boolean )
+			typeof( String ),
+			typeof( Type ),
+			typeof( DateTime ),
+			typeof( TimeSpan ),
+			typeof( Decimal ),
+			typeof( Boolean )
 		};
 
 		public virtual Dictionary<String, ApiDocModel> GetModels( Type type )
@@ -72,11 +72,13 @@ namespace SwaggerAPIDocumentation.Implementations
 
 					apiDocModels.Merge( GetKeyValuePairModel( key, value ) );
 
-					modelProperty = GetArrayModelProperty( typeof ( KeyValuePair<,> ) );
+					modelProperty = GetArrayModelProperty( typeof( KeyValuePair<,> ) );
 				}
 
 				GetNonPrimitiveModels( propertyType, apiDocModels );
 				apiDocModels.First().Value.properties.Add( property.Name, modelProperty );
+				if ( property.GetCustomAttributes( typeof( OptionalAttribute ), true ).Length == 0 )
+					apiDocModels.First().Value.required.Add( property.Name );
 			}
 		}
 
@@ -107,7 +109,7 @@ namespace SwaggerAPIDocumentation.Implementations
 
 		private static bool IsDictionary( Type type )
 		{
-			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof ( Dictionary<,> );
+			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof( Dictionary<,> );
 		}
 
 		private static bool IsArray( Type type )
@@ -117,7 +119,7 @@ namespace SwaggerAPIDocumentation.Implementations
 
 		private static bool IsAList( Type type )
 		{
-			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof ( List<> );
+			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof( List<> );
 		}
 
 		private void GetNonPrimitiveModels( Type propertyType, Dictionary<string, ApiDocModel> apiDocModels )
@@ -175,7 +177,8 @@ namespace SwaggerAPIDocumentation.Implementations
 					name, new ApiDocModel
 					{
 						id = name,
-						properties = new Dictionary<String, ApiDocModelProperty>()
+						properties = new Dictionary<String, ApiDocModelProperty>(),
+						required = new List<String>()
 					}
 				}
 			};
