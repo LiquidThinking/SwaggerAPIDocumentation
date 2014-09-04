@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text.RegularExpressions;
 using SwaggerAPIDocumentation.Interfaces;
 using SwaggerAPIDocumentation.ViewModels;
 
@@ -12,8 +11,7 @@ namespace SwaggerAPIDocumentation.Implementations
 	{
 		private readonly ITypeToStringConverter _typeToStringConverter;
 		private readonly IModelsGenerator _modelsGenerator;
-
-		private const string ParameterRegex = @"{(.*?)}";
+		private readonly ApiDocApiParametersBuilder _apiDocApiParametersBuilder = new ApiDocApiParametersBuilder();
 
 		public SwaggerDocumentationTools() : this( new TypeToStringConverter(), new ModelsGenerator() ) {}
 
@@ -57,20 +55,8 @@ namespace SwaggerAPIDocumentation.Implementations
 
 		private List<ApiDocApiParameters> GetParameters( KeyValuePair<ApiDocumentationAttribute, Type> attributeAndReturnType )
 		{
-			var regex = new Regex( ParameterRegex );
 			var url = attributeAndReturnType.Key.Url;
-
-			var result = ( from parameter in GetParameterFromUrl( regex, url )
-			               let name = parameter.Split( ':' )[ 0 ]
-			               let type = GetType( parameter )
-			               select new ApiDocApiParameters
-			               {
-				               required = true,
-				               paramType = GetParamType( parameter, url ),
-				               name = name,
-				               description = "",
-				               type = type
-			               } ).ToList();
+			var result = _apiDocApiParametersBuilder.GetApiDocApiParameters( url );
 
 			if ( attributeAndReturnType.Key.FormBody != null )
 				result.Add( new ApiDocApiParameters
@@ -82,20 +68,6 @@ namespace SwaggerAPIDocumentation.Implementations
 			return result;
 		}
 
-		private static IEnumerable<string> GetParameterFromUrl( Regex regex, string url )
-		{
-			return ( from Match m in regex.Matches( url ) select m.Groups[ 1 ].Value );
-		}
-
-		private static string GetType( string stripped )
-		{
-			return ( stripped.Split( ':' ).Count() == 1 ) ? "integer" : stripped.Split( ':' )[ 1 ];
-		}
-
-		private static string GetParamType( String match, string url )
-		{
-			return ( url.IndexOf(match, StringComparison.Ordinal) < ( ( url.IndexOf( '?' ) == -1 ) ? url.Length : url.IndexOf( '?' ) ) ? "path" : "query" );
-		}
 
 		private Dictionary<ApiDocumentationAttribute, Type> GetApiDocumentationAttributesAndReturnTypes( Type controllerType )
 		{
