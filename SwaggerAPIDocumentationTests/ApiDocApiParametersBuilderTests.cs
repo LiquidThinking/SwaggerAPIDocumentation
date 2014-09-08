@@ -12,7 +12,6 @@ namespace SwaggerAPIDocumentationTests
 	[TestFixture]
 	public class ApiDocApiParametersBuilderTests
 	{
-
 		private ApiDocApiParametersBuilder _builder;
 
 
@@ -52,7 +51,7 @@ namespace SwaggerAPIDocumentationTests
 			_builder = new ApiDocApiParametersBuilder();
 		}
 
-		[TestCaseSource("TestCases")]
+		[TestCaseSource( "TestCases" )]
 		public void BuildParameter_WithUrlWithOneParameter_ReturnsTheCorrectParameter( string url, ApiDocApiParametersExpected expected )
 		{
 			var result = _builder.GetApiDocApiParameters( url );
@@ -64,6 +63,16 @@ namespace SwaggerAPIDocumentationTests
 			Assert.AreEqual( expected.paramType, parameter.paramType );
 		}
 
+
+		[Test]
+		public void BuildParameter_WithBadParameters_FailsGracefully()
+		{
+			var result = _builder.GetApiDocApiParameters( "/Search?filter={name=filter;optional=true;type=String;The part of the user or team name to search for}" );
+			var parameter = result[ 0 ];
+			Assert.AreEqual( "filter", parameter.name );
+			Assert.IsFalse( parameter.required );
+			Assert.AreEqual( String.Empty, parameter.description );
+		}
 	}
 
 	public class ApiDocApiParametersExpected

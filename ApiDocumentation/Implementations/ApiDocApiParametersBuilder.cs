@@ -30,7 +30,7 @@ namespace SwaggerAPIDocumentation.Implementations
 			if ( parameter.Contains( "=" ) )
 			{
 				var parts = parameter.Split( ';' );
-				var dictionary = parts.Select( x => x.Split( '=' ) ).ToDictionary( x => x[ 0 ], x => x[ 1 ] );
+				var dictionary = parts.Select( x => x.Split( '=' ) ).ToDictionary( x => x[ 0 ], x => x.Length > 1 ? x[ 1 ] : String.Empty );
 
 				return new ApiDocApiParameters
 				{
