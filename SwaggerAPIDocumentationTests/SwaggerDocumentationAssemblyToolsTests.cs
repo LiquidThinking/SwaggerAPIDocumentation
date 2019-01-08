@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using NUnit.Framework;
 using SwaggerAPIDocumentation;
 using SwaggerAPIDocumentation.Implementations;
@@ -14,7 +15,7 @@ namespace SwaggerAPIDocumentationTests
 		[SetUp]
 		public void SetUp()
 		{
-			_swaggerDocumentationAssemblyTools = new SwaggerDocumentationAssemblyTools();
+			_swaggerDocumentationAssemblyTools = new SwaggerDocumentationAssemblyTools( new TestAssemblyProvider() );
 		}
 
 		[Test]
@@ -55,7 +56,18 @@ namespace SwaggerAPIDocumentationTests
 			Assert.Contains( typeof( FirstController ), derivedControllers );
 			Assert.Contains( typeof( AdditionalDerivedController ), derivedControllers );
 		}
+
+		[Test]
+		public void GetApiControllerTypes_WhenBaseControllerDefinedInDifferentAssembly_FindsDerivedTypesFromAssemblyProviderAssemblies()
+		{
+			var controllers = _swaggerDocumentationAssemblyTools
+				.GetApiControllerTypes( typeof( System.Web.Mvc.Controller ) );
+
+			Assert.Contains( typeof( InheritsDirectlyFromMvcController ), controllers );
+		}
 	}
+
+	public class InheritsDirectlyFromMvcController : System.Web.Mvc.Controller { }
 
 	public class BaseController : System.Web.Mvc.Controller { }
 
@@ -81,7 +93,16 @@ namespace SwaggerAPIDocumentationTests
 		public void MyMethod() { }
 	}
 
-	public class AdditionalDerivedController : AdditionalBaseController
+	public class AdditionalDerivedController : AdditionalBaseController { }
+
+	public class TestAssemblyProvider : IControllerAssemblyProvider
 	{
+		public List<Assembly> GetControllerAssemblies()
+		{
+			return new List<Assembly>
+			{
+				GetType().Assembly
+			};
+		}
 	}
 }

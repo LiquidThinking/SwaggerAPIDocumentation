@@ -68,7 +68,6 @@ namespace SwaggerAPIDocumentation.Implementations
 			return result;
 		}
 
-
 		private Dictionary<ApiDocumentationAttribute, Type> GetApiDocumentationAttributesAndReturnTypes( Type controllerType )
 		{
 			var result = new Dictionary<ApiDocumentationAttribute, Type>();
