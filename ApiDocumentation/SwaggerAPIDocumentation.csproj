@@ -115,6 +115,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ApiDocumentationAttribute.cs" />
+	<Compile Include="IBaseApiControllerTypeProvider.cs" />
     <Compile Include="Implementations\ApiDocApiParametersBuilder.cs" />
     <Compile Include="OptionalAttribute.cs" />
     <Compile Include="Interfaces\IModelsGenerator.cs" />

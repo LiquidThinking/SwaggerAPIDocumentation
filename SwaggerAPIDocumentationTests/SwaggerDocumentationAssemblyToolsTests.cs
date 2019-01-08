@@ -45,9 +45,21 @@ namespace SwaggerAPIDocumentationTests
 			Assert.IsTrue( result.Contains( typeof ( ThirdController ) ) );
 			Assert.IsTrue( result.Contains( typeof ( FourthController ) ) );
 		}
+
+		[Test]
+		public void GetApiControllerTypes_WhenSearchingForMultipleBaseTypes_FindsAllPertinentTypes()
+		{
+			var derivedControllers = _swaggerDocumentationAssemblyTools
+				.GetApiControllerTypes( typeof( BaseController ), typeof( AdditionalBaseController ) );
+
+			Assert.Contains( typeof( FirstController ), derivedControllers );
+			Assert.Contains( typeof( AdditionalDerivedController ), derivedControllers );
+		}
 	}
 
 	public class BaseController : System.Web.Mvc.Controller { }
+
+	public class AdditionalBaseController : System.Web.Mvc.Controller { }
 
 	public class MyClass { }
 
@@ -67,5 +79,9 @@ namespace SwaggerAPIDocumentationTests
 	{
 		[ApiDocumentation("")]
 		public void MyMethod() { }
+	}
+
+	public class AdditionalDerivedController : AdditionalBaseController
+	{
 	}
 }

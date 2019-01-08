@@ -15,6 +15,11 @@ local.properties
 .classpath
 .settings/
 .loadpath
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal
+*.cache
 
 # External tool builders
 .externalToolBuilders/

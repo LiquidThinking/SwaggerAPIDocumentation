@@ -1,37 +1,46 @@
 ﻿using System;
-using System.Web.Mvc;
 using SwaggerAPIDocumentation.Implementations;
 using SwaggerAPIDocumentation.Interfaces;
 
 namespace SwaggerAPIDocumentation
 {
-	public class SwaggerApiDocumentation<TBaseApiControllerType> : ISwaggerApiDocumentation
-		where TBaseApiControllerType : Controller
+	public class SwaggerApiDocumentation : ISwaggerApiDocumentation
 	{
 		private readonly ISwaggerDocumentationAssemblyTools _swaggerDocumentationAssemblyTools;
 		private readonly ISwaggerDocumentationCreator _swaggerDocumentationCreator;
+		private readonly IBaseApiControllerTypeProvider _baseApiControllerTypeProvider;
 		private readonly IJsonSerializer _jsonSerializer;
 
-		public SwaggerApiDocumentation() : this( new SwaggerDocumentationAssemblyTools(), new SwaggerDocumentationCreator(), new JsonSerializer() ) {}
+		public SwaggerApiDocumentation( IBaseApiControllerTypeProvider baseApiControllerTypeProvider )
+			: this( new SwaggerDocumentationAssemblyTools(), new SwaggerDocumentationCreator(), new JsonSerializer(), baseApiControllerTypeProvider )
+		{
+		}
 
-		public SwaggerApiDocumentation( IJsonSerializer jsonSerializer ) : this( new SwaggerDocumentationAssemblyTools(), new SwaggerDocumentationCreator(), jsonSerializer ) {}
+		public SwaggerApiDocumentation( IJsonSerializer jsonSerializer, IBaseApiControllerTypeProvider baseApiControllerTypeProvider )
+			: this( new SwaggerDocumentationAssemblyTools(), new SwaggerDocumentationCreator(), jsonSerializer, baseApiControllerTypeProvider )
+		{
+		}
 
 		internal SwaggerApiDocumentation(
 			ISwaggerDocumentationAssemblyTools swaggerDocumentationAssemblyTools,
 			ISwaggerDocumentationCreator swaggerDocumentationCreator,
-			IJsonSerializer jsonSerializer )
+			IJsonSerializer jsonSerializer, IBaseApiControllerTypeProvider baseApiControllerTypeProvider )
 		{
 			_swaggerDocumentationAssemblyTools = swaggerDocumentationAssemblyTools;
 			_swaggerDocumentationCreator = swaggerDocumentationCreator;
 			_jsonSerializer = jsonSerializer;
+			_baseApiControllerTypeProvider = baseApiControllerTypeProvider;
 		}
 
 		public String GetSwaggerApiList()
 		{
-			var allApiControllers = _swaggerDocumentationAssemblyTools.GetApiControllerTypes( typeof ( TBaseApiControllerType ) );
-			var pertinentApiControllers = _swaggerDocumentationAssemblyTools.GetTypesThatAreDecoratedWithApiDocumentationAttribute( allApiControllers );
-			var swaggerContents = _swaggerDocumentationCreator.GetSwaggerResourceList( pertinentApiControllers );
+			var allApiControllers = _swaggerDocumentationAssemblyTools
+				.GetApiControllerTypes( _baseApiControllerTypeProvider.GetApiBaseControllerTypes().ToArray() );
 
+			var pertinentApiControllers = _swaggerDocumentationAssemblyTools
+				.GetTypesThatAreDecoratedWithApiDocumentationAttribute( allApiControllers );
+
+			var swaggerContents = _swaggerDocumentationCreator.GetSwaggerResourceList( pertinentApiControllers );
 
 			return _jsonSerializer.SerializeObject( swaggerContents );
 		}
