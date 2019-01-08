@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using SwaggerAPIDocumentation.Interfaces;
 
 namespace SwaggerAPIDocumentation.Implementations
 {
 	internal class SwaggerDocumentationAssemblyTools : ISwaggerDocumentationAssemblyTools
 	{
-		private Type DocumentationAttributeType
-		{
-			get { return typeof ( ApiDocumentationAttribute ); }
-		}
+		private Type DocumentationAttributeType => typeof ( ApiDocumentationAttribute );
 
 		public List<Type> GetTypesThatAreDecoratedWithApiDocumentationAttribute( IEnumerable<Type> controllerTypes )
 		{
@@ -20,11 +18,19 @@ namespace SwaggerAPIDocumentation.Implementations
 			         select type ).ToList();
 		}
 
-		public List<Type> GetApiControllerTypes( Type baseControllerType )
+		public List<Type> GetApiControllerTypes( params Type[] baseControllerTypes )
 		{
-			return ( from type in GetTypesFromTypeAssembly( baseControllerType )
-			         where TypeInheritsFromBaseApiController( baseControllerType, type )
-			         select type ).ToList();
+			return GetControllerTypes().SelectMany( x => x ).ToList();
+
+			IEnumerable<IEnumerable<Type>> GetControllerTypes()
+			{
+				foreach ( var controllerType in baseControllerTypes )
+				{
+					yield return ( from type in GetTypesFromTypeAssembly( controllerType )
+						where TypeInheritsFromBaseApiController( controllerType, type )
+						select type ).ToList();
+				}
+			}
 		}
 
 		private bool TypeIsDecoratedWithApiDocumentationAttribute( Type type )

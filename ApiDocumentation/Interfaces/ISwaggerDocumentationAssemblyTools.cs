@@ -6,6 +6,6 @@ namespace SwaggerAPIDocumentation.Interfaces
 	internal interface ISwaggerDocumentationAssemblyTools
 	{
 		List<Type> GetTypesThatAreDecoratedWithApiDocumentationAttribute( IEnumerable<Type> controllerTypes );
-		List<Type> GetApiControllerTypes( Type baseControllerType );
+		List<Type> GetApiControllerTypes( params Type[] baseControllerTypes );
 	}
 }
