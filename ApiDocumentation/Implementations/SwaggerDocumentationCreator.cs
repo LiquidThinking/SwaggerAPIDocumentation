@@ -44,12 +44,12 @@ namespace SwaggerAPIDocumentation.Implementations
 			};
 		}
 
-		private List<SwaggerApiSummary> GetSwaggerApiSummaries( IEnumerable<Type> controllerTypes )
+		private static List<SwaggerApiSummary> GetSwaggerApiSummaries( IEnumerable<Type> controllerTypes )
 		{
 			return controllerTypes.Select( GetSwaggerApiSummary ).OrderBy( x => x.path ).ToList();
 		}
 
-		private SwaggerApiSummary GetSwaggerApiSummary( Type controllerType )
+		private static SwaggerApiSummary GetSwaggerApiSummary( Type controllerType )
 		{
 			return new SwaggerApiSummary
 			{
@@ -58,9 +58,9 @@ namespace SwaggerAPIDocumentation.Implementations
 			};
 		}
 
-		private string GetControllerPath( Type controllerType )
+		private static string GetControllerPath( Type controllerType )
 		{
-			return String.Format( "/{0}", controllerType.Name.Replace( ControllerEnding, "" ) );
+			return $"/{controllerType.Name.Replace( ControllerEnding, "" )}";
 		}
 	}
 }

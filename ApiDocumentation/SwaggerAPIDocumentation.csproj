@@ -83,40 +83,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
-		<When Condition="'$(Configuration)|$(Platform)' == 'Mvc51|AnyCPU'">
-			<ItemGroup>
-				<Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-					<HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.3\lib\net45\System.Web.Mvc.dll</HintPath>
-				</Reference>
-			</ItemGroup>
-		</When>
-		<When Condition="'$(Configuration)|$(Platform)' == 'Mvc5|AnyCPU'">
-			<ItemGroup>
-				<Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-					<HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
-				</Reference>
-			</ItemGroup>
-		</When>
-		<When Condition="'$(Configuration)|$(Platform)' == 'Mvc4|AnyCPU'">
-			<ItemGroup>
-				<Reference Include="System.Web.Mvc">
-					<HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.40804.0\lib\net40\System.Web.Mvc.dll</HintPath>
-				</Reference>
-			</ItemGroup>
-		</When>
-		<Otherwise>
-			<ItemGroup>
-				<Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-					<SpecificVersion>False</SpecificVersion>
-					<HintPath>..\packages\Microsoft.AspNet.Mvc.3.0.50813.1\lib\net40\System.Web.Mvc.dll</HintPath>
-				</Reference>
-			</ItemGroup>
-		</Otherwise>
+    <When Condition="'$(Configuration)|$(Platform)' == 'Mvc51|AnyCPU'">
+      <ItemGroup>
+        <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+          <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.3\lib\net45\System.Web.Mvc.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)|$(Platform)' == 'Mvc5|AnyCPU'">
+      <ItemGroup>
+        <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+          <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)|$(Platform)' == 'Mvc4|AnyCPU'">
+      <ItemGroup>
+        <Reference Include="System.Web.Mvc">
+          <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.40804.0\lib\net40\System.Web.Mvc.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>..\packages\Microsoft.AspNet.Mvc.3.0.50813.1\lib\net40\System.Web.Mvc.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
   </Choose>
   <ItemGroup>
     <Compile Include="ApiDocumentationAttribute.cs" />
-	<Compile Include="IBaseApiControllerTypeProvider.cs" />
+    <Compile Include="IBaseApiControllerTypeProvider.cs" />
     <Compile Include="Implementations\ApiDocApiParametersBuilder.cs" />
+    <Compile Include="Interfaces\IControllerAssemblyProvider.cs" />
     <Compile Include="OptionalAttribute.cs" />
     <Compile Include="Interfaces\IModelsGenerator.cs" />
     <Compile Include="Implementations\JsonSerializer.cs" />

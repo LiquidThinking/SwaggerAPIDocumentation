@@ -11,13 +11,18 @@ namespace SwaggerAPIDocumentation
 		private readonly IBaseApiControllerTypeProvider _baseApiControllerTypeProvider;
 		private readonly IJsonSerializer _jsonSerializer;
 
-		public SwaggerApiDocumentation( IBaseApiControllerTypeProvider baseApiControllerTypeProvider )
-			: this( new SwaggerDocumentationAssemblyTools(), new SwaggerDocumentationCreator(), new JsonSerializer(), baseApiControllerTypeProvider )
+		public SwaggerApiDocumentation(
+			IBaseApiControllerTypeProvider baseApiControllerTypeProvider, 
+			IControllerAssemblyProvider controllerAssemblyProvider )
+			: this( new SwaggerDocumentationAssemblyTools( controllerAssemblyProvider ), new SwaggerDocumentationCreator(), new JsonSerializer(), baseApiControllerTypeProvider )
 		{
 		}
 
-		public SwaggerApiDocumentation( IJsonSerializer jsonSerializer, IBaseApiControllerTypeProvider baseApiControllerTypeProvider )
-			: this( new SwaggerDocumentationAssemblyTools(), new SwaggerDocumentationCreator(), jsonSerializer, baseApiControllerTypeProvider )
+		public SwaggerApiDocumentation( 
+			IJsonSerializer jsonSerializer, 
+			IBaseApiControllerTypeProvider baseApiControllerTypeProvider, 
+			IControllerAssemblyProvider controllerAssemblyProvider )
+			: this( new SwaggerDocumentationAssemblyTools( controllerAssemblyProvider ), new SwaggerDocumentationCreator(), jsonSerializer, baseApiControllerTypeProvider )
 		{
 		}
 

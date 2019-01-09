@@ -29,9 +29,7 @@ namespace SwaggerAPIDocumentationTests
 		[Test]
 		public void Controller_Always_CanGetInstance()
 		{
-			var apiDocumentation = new SwaggerApiDocumentation( new TestControllerTypeProvider() );
-
-			Assert.IsNotNull( apiDocumentation );
+			Assert.IsNotNull( new SwaggerApiDocumentation( new TestControllerTypeProvider(), new TestAssemblyProvider() ) );
 		}
 
 		[Test]
