@@ -87,9 +87,13 @@ D:\SwaggerAPIDocumentation\ApiDocumentation\bin\Debug\SwaggerAPIDocumentation.dl
 D:\SwaggerAPIDocumentation\ApiDocumentation\bin\Debug\SwaggerAPIDocumentation.pdb
 D:\SwaggerAPIDocumentation\ApiDocumentation\obj\Debug\SwaggerAPIDocumentation.dll
 D:\SwaggerAPIDocumentation\ApiDocumentation\obj\Debug\SwaggerAPIDocumentation.pdb
-D:\SwaggerAPIDocumentation\ApiDocumentation\obj\Debug\SwaggerAPIDocumentation.csprojResolveAssemblyReference.cache
 C:\Users\Jake\Documents\GitHub\SwaggerAPIDocumentation\ApiDocumentation\bin\Debug\SwaggerAPIDocumentation.dll
 C:\Users\Jake\Documents\GitHub\SwaggerAPIDocumentation\ApiDocumentation\bin\Debug\SwaggerAPIDocumentation.pdb
 C:\Users\Jake\Documents\GitHub\SwaggerAPIDocumentation\ApiDocumentation\obj\Debug\SwaggerAPIDocumentation.csprojResolveAssemblyReference.cache
 C:\Users\Jake\Documents\GitHub\SwaggerAPIDocumentation\ApiDocumentation\obj\Debug\SwaggerAPIDocumentation.dll
 C:\Users\Jake\Documents\GitHub\SwaggerAPIDocumentation\ApiDocumentation\obj\Debug\SwaggerAPIDocumentation.pdb
+D:\SwaggerAPIDocumentation\ApiDocumentation\bin\Debug\Newtonsoft.Json.dll
+D:\SwaggerAPIDocumentation\ApiDocumentation\bin\Debug\System.Web.Mvc.dll
+D:\SwaggerAPIDocumentation\ApiDocumentation\bin\Debug\Newtonsoft.Json.xml
+D:\SwaggerAPIDocumentation\ApiDocumentation\obj\Debug\SwaggerAPIDocumentation.csproj.CoreCompileInputs.cache
+D:\SwaggerAPIDocumentation\ApiDocumentation\obj\Debug\SwaggerAPIDocumentation.csproj.CopyComplete
