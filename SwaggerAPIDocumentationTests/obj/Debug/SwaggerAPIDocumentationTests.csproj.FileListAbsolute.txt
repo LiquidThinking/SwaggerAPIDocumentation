@@ -7,7 +7,6 @@ D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\Newtonsoft.Jso
 D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\SwaggerAPIDocumentation.pdb
 D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\nunit.framework.xml
 D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\Rhino.Mocks.xml
-D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\obj\Debug\SwaggerAPIDocumentationTests.csprojResolveAssemblyReference.cache
 D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\obj\Debug\SwaggerAPIDocumentationTests.dll
 D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\obj\Debug\SwaggerAPIDocumentationTests.pdb
 C:\Users\Jake\Documents\GitHub\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\SwaggerAPIDocumentationTests.dll
@@ -22,3 +21,8 @@ C:\Users\Jake\Documents\GitHub\SwaggerAPIDocumentation\SwaggerAPIDocumentationTe
 C:\Users\Jake\Documents\GitHub\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\obj\Debug\SwaggerAPIDocumentationTests.csprojResolveAssemblyReference.cache
 C:\Users\Jake\Documents\GitHub\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\obj\Debug\SwaggerAPIDocumentationTests.dll
 C:\Users\Jake\Documents\GitHub\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\obj\Debug\SwaggerAPIDocumentationTests.pdb
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\System.Web.Mvc.dll
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\bin\Debug\Newtonsoft.Json.xml
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\obj\Debug\SwaggerAPIDocumentationTests.csproj.AssemblyReference.cache
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\obj\Debug\SwaggerAPIDocumentationTests.csproj.CoreCompileInputs.cache
+D:\SwaggerAPIDocumentation\SwaggerAPIDocumentationTests\obj\Debug\SwaggerAPIDocumentationTests.csproj.CopyComplete

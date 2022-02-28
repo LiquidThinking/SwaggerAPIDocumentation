@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Remoting;
+using System.Threading.Tasks;
 using SwaggerAPIDocumentation.Interfaces;
 using SwaggerAPIDocumentation.ViewModels;
 
@@ -32,8 +34,9 @@ namespace SwaggerAPIDocumentation.Implementations
 
 		public virtual Dictionary<String, ApiDocModel> GetModels( Type type )
 		{
-			if ( IsAList( type ) )
+			if ( IsAList( type ) || IsTask( type ))
 				type = GetGenericArgument( type, 0 );
+
 			if ( IsArray( type ) )
 				type = type.GetElementType();
 
@@ -44,6 +47,10 @@ namespace SwaggerAPIDocumentation.Implementations
 
 			return apiDocModels;
 		}
+
+		private static bool IsTask(Type type)
+			=> type.IsGenericType
+			   && type.GetGenericTypeDefinition() == typeof(Task<>);
 
 		private void ProcessType( Type type, Dictionary<string, ApiDocModel> apiDocModels )
 		{
