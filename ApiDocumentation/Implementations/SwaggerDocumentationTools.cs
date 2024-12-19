@@ -88,9 +88,13 @@ namespace SwaggerAPIDocumentation.Implementations
 			foreach ( var apiDocumentationAttributesAndReturnType in GetApiDocumentationAttributesAndReturnTypes( controllerType ) )
 			{
 				result.Merge( _modelsGenerator.GetModels( apiDocumentationAttributesAndReturnType.Key.ReturnType ?? apiDocumentationAttributesAndReturnType.Value ) );
-			}
 
-			return result;
+                //Get models for parameters
+                if ( apiDocumentationAttributesAndReturnType.Key.FormBody != null )
+                    result.Merge( _modelsGenerator.GetModels(apiDocumentationAttributesAndReturnType.Key.FormBody) );
+            }
+
+            return result;
 		}
 
 		private IEnumerable<MethodInfo> GetControllerMethods( Type controllerType )
