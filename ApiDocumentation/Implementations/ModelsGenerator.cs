@@ -40,7 +40,10 @@ namespace SwaggerAPIDocumentation.Implementations
 			if ( IsArray( type ) )
 				type = type.GetElementType();
 
-			var name = _typeToStringConverter.GetApiOperationType( type );
+            if (IsNullableType(type))
+                type = Nullable.GetUnderlyingType(type);
+
+            var name = _typeToStringConverter.GetApiOperationType( type );
 			var apiDocModels = InitializeApiDocModels( name );
 
 			ProcessType( type, apiDocModels );
@@ -52,7 +55,12 @@ namespace SwaggerAPIDocumentation.Implementations
 			=> type.IsGenericType
 			   && type.GetGenericTypeDefinition() == typeof(Task<>);
 
-		private void ProcessType( Type type, Dictionary<string, ApiDocModel> apiDocModels )
+        private static bool IsNullableType(Type typeToConvert)
+        {
+            return Nullable.GetUnderlyingType(typeToConvert) != null;
+        }
+
+        private void ProcessType( Type type, Dictionary<string, ApiDocModel> apiDocModels )
 		{
 			foreach ( var property in type.GetProperties() )
 			{
@@ -81,8 +89,12 @@ namespace SwaggerAPIDocumentation.Implementations
 
 					modelProperty = GetArrayModelProperty( typeof( KeyValuePair<,> ) );
 				}
+				else if (IsNullableType(propertyType))
+                {
+                    propertyType = Nullable.GetUnderlyingType(propertyType);
+                }
 
-				GetNonPrimitiveModels( propertyType, apiDocModels );
+                GetNonPrimitiveModels( propertyType, apiDocModels );
 				apiDocModels.First().Value.properties.Add( property.Name, modelProperty );
 				if ( property.GetCustomAttributes( typeof( OptionalAttribute ), true ).Length == 0 )
 					apiDocModels.First().Value.required.Add( property.Name );
