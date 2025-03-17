@@ -221,3 +221,5 @@ pip-log.txt
 
 #Nuget packages
 *.nupkg
+
+.vs

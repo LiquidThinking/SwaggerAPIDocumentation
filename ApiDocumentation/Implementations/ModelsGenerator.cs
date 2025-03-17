@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Remoting;
 using System.Threading.Tasks;
 using SwaggerAPIDocumentation.Interfaces;
 using SwaggerAPIDocumentation.ViewModels;
